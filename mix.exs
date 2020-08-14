@@ -4,8 +4,8 @@ defmodule PaperTrail.Mixfile do
   def project do
     [
       app: :paper_trail,
-      version: "0.8.0",
-      elixir: "~> 1.6",
+      version: "0.8.7",
+      elixir: "~> 1.10",
       description: description(),
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
@@ -20,16 +20,17 @@ defmodule PaperTrail.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [
-      applications: [:logger, :postgrex, :ecto]
+      applications: [:logger, :ecto, :runtime_tools]
     ]
   end
 
   defp deps do
     [
-      {:ecto, ">= 2.1.0"},
-      {:poison, ">= 3.1.0 or >= 2.0.0"},
-      {:ex_doc, ">= 0.0.0", only: :dev},
-      {:postgrex, "~> 0.13.0"}
+      {:ecto, ">= 3.4.0"},
+      {:ecto_sql, ">= 3.4.0"},
+      {:ex_doc, ">= 0.21.3"},
+      {:postgrex, ">= 0.0.0", only: [:dev, :test]},
+      {:jason, ">= 1.2.0", only: [:dev, :test]}
     ]
   end
 
