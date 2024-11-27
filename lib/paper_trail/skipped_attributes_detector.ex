@@ -6,7 +6,7 @@ defmodule PaperTrail.SkippedAttributesDetector do
   def call(module) when is_atom(module) do
     case :erlang.function_exported(module, :paper_trail_skip, 0) do
       true ->
-        attrs = module.paper_trail_skip
+        attrs = module.paper_trail_skip()
 
         case is_list(attrs) do
           true ->
